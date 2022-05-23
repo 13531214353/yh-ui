@@ -9,20 +9,26 @@ module.exports = defineConfig({
   lintOnSave: true,
   productionSourceMap: false,
   outputDir: "lib",
-  // configureWebpack: {
-  //   entry: {
-  //     button: path.resolve(__dirname, "./packages/button/index.ts"),
-  //     image: path.resolve(__dirname, "./packages/image/index.ts"),
-  //   },
-  //   output: {
-  //     filename: "[name]/index.js",
-  //   },
+  // entry: {
+  //   button: path.resolve(__dirname, "./packages/button/index.ts"),
+  //   image: path.resolve(__dirname, "./packages/image/index.ts"),
   // },
+  // output: {
+  //   filename: "[name]/index.js",
+  // },
+  configureWebpack: {
+    entry: {
+      button: path.resolve(__dirname, "./packages/button/index.ts"),
+      image: path.resolve(__dirname, "./packages/image/index.ts"),
+    },
+    output: {
+      filename: "[name]/index.js",
+      libraryTarget: "umd",
+    },
+  },
   pages: {
-    button: {
-      entry: path.resolve(__dirname, "./packages/button/index.ts"),
-      template: "public/index.html",
-      filename: "index.html",
+    index: {
+      entry: path.resolve(__dirname, "./examples/main.ts"),
     },
   },
   chainWebpack: (config) => {
@@ -35,5 +41,12 @@ module.exports = defineConfig({
       .tap((options) => {
         return options;
       });
+    config.optimization.delete("splitChunks");
+    config.plugins.delete("copy");
+    config.plugins.delete("html");
+    config.plugins.delete("preload");
+    config.plugins.delete("prefetch");
+    config.plugins.delete("hmr");
+    config.entryPoints.delete("app");
   },
 });

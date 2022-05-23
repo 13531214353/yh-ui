@@ -1,4 +1,9 @@
 import Button from "./button";
 import Image from "./image";
 
-export { Button, Image };
+export default {
+  install(Vue: any) {
+    Vue.use(Button);
+    Vue.use(Image);
+  },
+};
