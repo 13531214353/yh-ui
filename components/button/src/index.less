@@ -1,0 +1,49 @@
+@import "../../../style/var.less";
+
+:root {
+  --var-button-small-width: 60px;
+  --var-button-default-width: 80px;
+  --var-button-large-width: 120px;
+  --var-button-small-height: 24px;
+  --var-button-default-height: 36px;
+  --var-button-large-height: 44px;
+  --var-button-default-font-size: 14px;
+  --var-button-border-radius: 10px;
+  --var-button-border: 1px solid @black;
+  --var-active-border: 1px solid @blue;
+  --var-button-small-padding: 0 5px;
+  --var-button-default-padding: 0 8px;
+  --var-button-large-padding: 0 15px;
+  --var-button-text-color: @black;
+  --var-button-active-text-color: @blue;
+}
+
+.yh-button {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  height: var(--var-button-default-height);
+  line-height: var(--var-button-default-height);
+  margin: 0;
+  padding: 0;
+  font-size: var(--var-button-default-font-size);
+  border-radius: var(--var-button-border-radius);
+  border: var(--var-button-border);
+  text-align: center;
+  user-select: none;
+  color: var(--var-button-text-color);
+  padding: var(--var-button-default-padding);
+  &-small {
+    height: var(--var-button-small-height);
+    line-height: var(--var-button-small-height);
+  }
+  &-large {
+    height: var(--var-button-large-height);
+    line-height: var(--var-button-large-height);
+  }
+  &:active {
+    border: var(--var-active-border);
+    color: var(--var-button-active-text-color);
+  }
+}
+
